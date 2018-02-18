@@ -7,8 +7,9 @@ package android.dev.safesend;
 public class Contact {
     private String name;
     private String number;
-    public Contact(String na, String nu){
-        name=na;number=nu;
+    private String message;
+    public Contact(String na, String nu, String me){
+        name=na;number=nu;message=me;
     }
     public void setName(String na){
         name = na;
@@ -21,6 +22,10 @@ public class Contact {
     }
     public String getName(){
         return name;
+    }
+    public void sendSMS(){
+        android.telephony.SmsManager sms = android.telephony.SmsManager.getDefault();
+        sms.sendTextMessage(number, null, message, null, null);
     }
     public String getNumber(){
         return number;
